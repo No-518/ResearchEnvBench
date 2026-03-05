@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SciMLOpsBenchReport",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "python_path",
+    "python_version",
+    "torch_version",
+    "cuda_available",
+    "gpu_count",
+    "ddp_expected_ok",
+    "env_tool",
+    "env_name",
+    "notes"
+  ],
+  "properties": {
+    "python_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Absolute path to the Python interpreter to be used for evaluation."
+    },
+    "python_version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Python version string (e.g., 3.11.8). Use null if not verified."
+    },
+    "torch_version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "PyTorch version string (e.g., 2.4.0+cu124). Use null if not installed/verified."
+    },
+    "cuda_available": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "torch.cuda.is_available() result if verified; otherwise null."
+    },
+    "gpu_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Number of visible GPUs if verified; otherwise null."
+    },
+    "ddp_expected_ok": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Whether multi-GPU/DDP is expected to work; null if not verified."
+    },
+    "env_tool": {
+      "type": "string",
+      "enum": [
+        "conda",
+        "uv",
+        "pip",
+        "poetry",
+        "venv",
+        "none"
+      ],
+      "description": "Environment management tool used."
+    },
+    "env_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Environment name (conda env name, venv dir name, etc)."
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Human-readable setup notes, key commands, uncertainties."
+    },
+    "dataset_hf_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_hf_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "installed_packages": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "capabilities": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "artifacts": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

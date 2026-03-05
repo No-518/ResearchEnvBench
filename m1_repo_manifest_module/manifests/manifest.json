@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-01-15T08:15:38Z",
+  "source": {
+    "xlsx_path": "repos_from_csv.xlsx",
+    "sheet": "Sheet1",
+    "row_count_raw": 44,
+    "repo_count": 44
+  },
+  "defaults": {
+    "baseline_targets": [
+      "nexau"
+    ]
+  },
+  "repos": [
+    {
+      "row_index": 0,
+      "repo_url": "https://github.com/Auto1111SDK/Auto1111SDK",
+      "repo_full_name": "Auto1111SDK/Auto1111SDK",
+      "commit_sha": "4f3cd1504d0afa344fd322df0c4ac3e9eec7a129",
+      "repo_id": "Auto1111SDK__Auto1111SDK",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 1,
+      "repo_url": "https://github.com/DepthAnything/Depth-Anything-V2",
+      "repo_full_name": "DepthAnything/Depth-Anything-V2",
+      "commit_sha": "e5a2732d3ea2cddc081d7bfd708fc0bf09f812f1",
+      "repo_id": "DepthAnything__Depth-Anything-V2",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 2,
+      "repo_url": "https://github.com/FunAudioLLM/FunMusic",
+      "repo_full_name": "FunAudioLLM/FunMusic",
+      "commit_sha": "0aefb55b58b8df91accdc4aed20c99e44741e0a7",
+      "repo_id": "FunAudioLLM__FunMusic",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 3,
+      "repo_url": "https://github.com/FunAudioLLM/SenseVoice",
+      "repo_full_name": "FunAudioLLM/SenseVoice",
+      "commit_sha": "1a90d46cb933ef9e213b7d90292b9301b3e20f40",
+      "repo_id": "FunAudioLLM__SenseVoice",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 4,
+      "repo_url": "https://github.com/GeeeekExplorer/nano-vllm",
+      "repo_full_name": "GeeeekExplorer/nano-vllm",
+      "commit_sha": "2f214426530e2841e7d24c73ee0dfa914d62df56",
+      "repo_id": "GeeeekExplorer__nano-vllm",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 5,
+      "repo_url": "https://github.com/HaozheLiu-ST/T-GATE",
+      "repo_full_name": "HaozheLiu-ST/T-GATE",
+      "commit_sha": "ab2a88fa50319cbb0bfcdc2772405573b266fa13",
+      "repo_id": "HaozheLiu-ST__T-GATE",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 6,
+      "repo_url": "https://github.com/InternLM/InternEvo",
+      "repo_full_name": "InternLM/InternEvo",
+      "commit_sha": "a5b3972be7cc3448563b4ddfbb0cee736bdea7ef",
+      "repo_id": "InternLM__InternEvo",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 7,
+      "repo_url": "https://github.com/KRLabsOrg/LettuceDetect",
+      "repo_full_name": "KRLabsOrg/LettuceDetect",
+      "commit_sha": "b302fdb8568f257615d1c4a9d2d2ee69e11c5b72",
+      "repo_id": "KRLabsOrg__LettuceDetect",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 8,
+      "repo_url": "https://github.com/LMCache/LMCache",
+      "repo_full_name": "LMCache/LMCache",
+      "commit_sha": "de25f0f692089b750a4b8c416ab18f8c7c0e5b8e",
+      "repo_id": "LMCache__LMCache",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 9,
+      "repo_url": "https://github.com/LiheYoung/Depth-Anything",
+      "repo_full_name": "LiheYoung/Depth-Anything",
+      "commit_sha": "1d03336771fe09c5398ffdd211441e33941a97dc",
+      "repo_id": "LiheYoung__Depth-Anything",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 10,
+      "repo_url": "https://github.com/MoonshotAI/MoBA",
+      "repo_full_name": "MoonshotAI/MoBA",
+      "commit_sha": "b5d58363311d3ca946f1ec444182727c15e338b5",
+      "repo_id": "MoonshotAI__MoBA",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 11,
+      "repo_url": "https://github.com/NVIDIA/kvpress",
+      "repo_full_name": "NVIDIA/kvpress",
+      "commit_sha": "ef2a1ca5f81bec64a382e5bb66d5a77d4af853f2",
+      "repo_id": "NVIDIA__kvpress",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 12,
+      "repo_url": "https://github.com/NVlabs/Sana",
+      "repo_full_name": "NVlabs/Sana",
+      "commit_sha": "08c656c373ab58991452aa1e3fc912428f32ae9f",
+      "repo_id": "NVlabs__Sana",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 13,
+      "repo_url": "https://github.com/OpenBMB/VoxCPM",
+      "repo_full_name": "OpenBMB/VoxCPM",
+      "commit_sha": "6ecc00a5d3b7efcb9179a66dcef393b04f39e2a6",
+      "repo_id": "OpenBMB__VoxCPM",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 14,
+      "repo_url": "https://github.com/RingBDStack/SocialED",
+      "repo_full_name": "RingBDStack/SocialED",
+      "commit_sha": "660e9d84b114a4084a3972cc00b1451c11c87f67",
+      "repo_id": "RingBDStack__SocialED",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 15,
+      "repo_url": "https://github.com/SWivid/F5-TTS",
+      "repo_full_name": "SWivid/F5-TTS",
+      "commit_sha": "27e20fcf39fbce3f187a61d4a3e92065d2d9b947",
+      "repo_id": "SWivid__F5-TTS",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 16,
+      "repo_url": "https://github.com/ZhengYinan-AIR/Diffusion-Planner",
+      "repo_full_name": "ZhengYinan-AIR/Diffusion-Planner",
+      "commit_sha": "3558eaccee936f177ffbb3fb420540eccd8855e9",
+      "repo_id": "ZhengYinan-AIR__Diffusion-Planner",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 17,
+      "repo_url": "https://github.com/alephpi/Texo",
+      "repo_full_name": "alephpi/Texo",
+      "commit_sha": "a462c537a9726545d2bcfb639c9f99224d1e36c2",
+      "repo_id": "alephpi__Texo",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 18,
+      "repo_url": "https://github.com/apple/ml-aim",
+      "repo_full_name": "apple/ml-aim",
+      "commit_sha": "bd9e06893f3ad68bda56b34ac2158fda2680b7fc",
+      "repo_id": "apple__ml-aim",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 19,
+      "repo_url": "https://github.com/apple/ml-mdm",
+      "repo_full_name": "apple/ml-mdm",
+      "commit_sha": "dfa4718be3e327d8f7b46a2ab9f6c1c28e2f3ce0",
+      "repo_id": "apple__ml-mdm",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 20,
+      "repo_url": "https://github.com/c2g-dev/city2graph",
+      "repo_full_name": "c2g-dev/city2graph",
+      "commit_sha": "db9fcb91062fb8eff653ab52e8c7b60a4cd266bc",
+      "repo_id": "c2g-dev__city2graph",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 21,
+      "repo_url": "https://github.com/emidan19/deep-tempest",
+      "repo_full_name": "emidan19/deep-tempest",
+      "commit_sha": "096081cc8efeee393561a753b7b5012d130c5757",
+      "repo_id": "emidan19__deep-tempest",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 22,
+      "repo_url": "https://github.com/facebookresearch/large_concept_model",
+      "repo_full_name": "facebookresearch/large_concept_model",
+      "commit_sha": "fd7db8022113ae2d2ff1219d9a4cb4def897e3ff",
+      "repo_id": "facebookresearch__large_concept_model",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 23,
+      "repo_url": "https://github.com/facebookresearch/sapiens",
+      "repo_full_name": "facebookresearch/sapiens",
+      "commit_sha": "08dce797f7b40f5b41388f518cac85535c3f5d13",
+      "repo_id": "facebookresearch__sapiens",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 24,
+      "repo_url": "https://github.com/feifeibear/long-context-attention",
+      "repo_full_name": "feifeibear/long-context-attention",
+      "commit_sha": "a52d85007ced2065dd71c498be65a02d62b51cac",
+      "repo_id": "feifeibear__long-context-attention",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 25,
+      "repo_url": "https://github.com/flagos-ai/FlagGems",
+      "repo_full_name": "flagos-ai/FlagGems",
+      "commit_sha": "c5af8839c871a7f626d693476ba7f18d30ba04a4",
+      "repo_id": "flagos-ai__FlagGems",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 26,
+      "repo_url": "https://github.com/hpcaitech/Open-Sora",
+      "repo_full_name": "hpcaitech/Open-Sora",
+      "commit_sha": "d0cd5ac50da79e9a9d2285a952d4dcd806e6c8fc",
+      "repo_id": "hpcaitech__Open-Sora",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 27,
+      "repo_url": "https://github.com/huggingface/finetrainers",
+      "repo_full_name": "huggingface/finetrainers",
+      "commit_sha": "f476c3717da6cbfb1070505a99ee989426b46d9c",
+      "repo_id": "huggingface__finetrainers",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 28,
+      "repo_url": "https://github.com/hustvl/Vim",
+      "repo_full_name": "hustvl/Vim",
+      "commit_sha": "dd0358ad1e42701f22afbefa0717cc8825cf9f45",
+      "repo_id": "hustvl__Vim",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 29,
+      "repo_url": "https://github.com/kotaro-kinoshita/yomitoku",
+      "repo_full_name": "kotaro-kinoshita/yomitoku",
+      "commit_sha": "f68b55702cf5712524ff4a7b4665ebde622132ca",
+      "repo_id": "kotaro-kinoshita__yomitoku",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 30,
+      "repo_url": "https://github.com/kyegomez/MultiModalMamba",
+      "repo_full_name": "kyegomez/MultiModalMamba",
+      "commit_sha": "58db40bcbd2e957c7981b6eed6de165b6a5ccd42",
+      "repo_id": "kyegomez__MultiModalMamba",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 31,
+      "repo_url": "https://github.com/kyegomez/VisionMamba",
+      "repo_full_name": "kyegomez/VisionMamba",
+      "commit_sha": "c88e09a52240910e08c4af754d340ad946112487",
+      "repo_id": "kyegomez__VisionMamba",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 32,
+      "repo_url": "https://github.com/lightly-ai/lightly-train",
+      "repo_full_name": "lightly-ai/lightly-train",
+      "commit_sha": "9716e64a7043c1a4857ece3b3436d831e9d97722",
+      "repo_id": "lightly-ai__lightly-train",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 33,
+      "repo_url": "https://github.com/meta-pytorch/torchft",
+      "repo_full_name": "meta-pytorch/torchft",
+      "commit_sha": "86c42910df9140bdfee68fbba29233c3cab84288",
+      "repo_id": "meta-pytorch__torchft",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 34,
+      "repo_url": "https://github.com/metavoiceio/metavoice-src",
+      "repo_full_name": "metavoiceio/metavoice-src",
+      "commit_sha": "de3fa211ac4621e03a5f990651aeecc64da418f5",
+      "repo_id": "metavoiceio__metavoice-src",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 35,
+      "repo_url": "https://github.com/microsoft/renderformer",
+      "repo_full_name": "microsoft/renderformer",
+      "commit_sha": "c51f87083d0eebb806803fe32a357b8d9aefb085",
+      "repo_id": "microsoft__renderformer",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 36,
+      "repo_url": "https://github.com/modelscope/ClearerVoice-Studio",
+      "repo_full_name": "modelscope/ClearerVoice-Studio",
+      "commit_sha": "6b3774dc79c46ae8bed2a4fa5f706f0ac8c75c61",
+      "repo_id": "modelscope__ClearerVoice-Studio",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 37,
+      "repo_url": "https://github.com/ogkalu2/comic-translate",
+      "repo_full_name": "ogkalu2/comic-translate",
+      "commit_sha": "2a43edd0565bd07a391725d4e104ddb90cacae0d",
+      "repo_id": "ogkalu2__comic-translate",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 38,
+      "repo_url": "https://github.com/remsky/Kokoro-FastAPI",
+      "repo_full_name": "remsky/Kokoro-FastAPI",
+      "commit_sha": "3af45719940c915b53ad2a63f9cdb6f22680d276",
+      "repo_id": "remsky__Kokoro-FastAPI",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 39,
+      "repo_url": "https://github.com/rllm-team/rllm",
+      "repo_full_name": "rllm-team/rllm",
+      "commit_sha": "0c0e4ec9b158318d72a09d810c060e0c9529c074",
+      "repo_id": "rllm-team__rllm",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 40,
+      "repo_url": "https://github.com/sgl-project/SpecForge",
+      "repo_full_name": "sgl-project/SpecForge",
+      "commit_sha": "077f286269a7e10ca7b18f7a33e49e8c6cbeac4f",
+      "repo_id": "sgl-project__SpecForge",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 41,
+      "repo_url": "https://github.com/thu-pacman/chitu",
+      "repo_full_name": "thu-pacman/chitu",
+      "commit_sha": "d2cc0f5a2bdc262e75cc45ee1c4cdf7778279dd0",
+      "repo_id": "thu-pacman__chitu",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 42,
+      "repo_url": "https://github.com/vllm-project/vllm-omni",
+      "repo_full_name": "vllm-project/vllm-omni",
+      "commit_sha": "8c1259383c0bdffe7e856b6809163d8385e657de",
+      "repo_id": "vllm-project__vllm-omni",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    },
+    {
+      "row_index": 43,
+      "repo_url": "https://github.com/yuanze-lin/Olympus",
+      "repo_full_name": "yuanze-lin/Olympus",
+      "commit_sha": "d49bffd878dcb96e7cd4d9312e0852b26e34eab8",
+      "repo_id": "yuanze-lin__Olympus",
+      "hardware_bucket": "auto",
+      "hardware_tags": {
+        "raw": null
+      },
+      "baseline_targets": [
+        "nexau"
+      ],
+      "eval_dims": []
+    }
+  ]
+}

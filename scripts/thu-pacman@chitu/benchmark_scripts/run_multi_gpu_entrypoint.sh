@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root" || exit 1
+
+out_dir="$repo_root/build_output/multi_gpu"
+mkdir -p "$out_dir"
+
+assets_json_path="$out_dir/assets.json"
+prepare_results="$repo_root/build_output/prepare/results.json"
+
+if [[ -f "$prepare_results" ]]; then
+  jq -c '.assets // {"dataset":{"path":"","source":"","version":"","sha256":""},"model":{"path":"","source":"","version":"","sha256":""}}' \
+    "$prepare_results" >"$assets_json_path" 2>/dev/null \
+    || echo '{"dataset":{"path":"","source":"","version":"","sha256":""},"model":{"path":"","source":"","version":"","sha256":""}}' >"$assets_json_path"
+else
+  echo '{"dataset":{"path":"","source":"","version":"","sha256":""},"model":{"path":"","source":"","version":"","sha256":""}}' >"$assets_json_path"
+fi
+
+model_name="$(jq -r '.meta.model_name // "Qwen2.5-0.5B"' "$prepare_results" 2>/dev/null || echo "Qwen2.5-0.5B")"
+dataset_path="$(jq -r '.assets.dataset.path // empty' "$prepare_results" 2>/dev/null || true)"
+model_path="$(jq -r '.assets.model.path // empty' "$prepare_results" 2>/dev/null || true)"
+
+gpu_ids="${SCIMLOPSBENCH_MULTI_GPU_IDS:-0,1}"
+
+# Check GPU count (must be >=2), using the benchmark python if available.
+python_exec="${SCIMLOPSBENCH_PYTHON:-}"
+report_path="${SCIMLOPSBENCH_REPORT:-/opt/scimlopsbench/report.json}"
+if [[ -z "$python_exec" && -f "$report_path" ]]; then
+  python_exec="$(jq -r '.python_path // empty' "$report_path" 2>/dev/null || true)"
+fi
+if [[ -z "$python_exec" ]]; then
+  python_exec="python"
+fi
+
+gpu_count="$("$python_exec" - <<'PY'
+try:
+    import torch
+    print(int(torch.cuda.device_count()))
+except Exception:
+    print(-1)
+PY
+)"
+
+if [[ "$gpu_count" -lt 2 ]]; then
+  echo "[multi_gpu] Need >=2 GPUs, observed gpu_count=$gpu_count"
+  python3 benchmark_scripts/runner.py \
+    --stage multi_gpu --task infer --out-dir "$out_dir" --framework pytorch --timeout-sec 1200 \
+    --assets-json "$assets_json_path" \
+    --decision-reason "Multi-GPU requires >=2 GPUs." \
+    --env CUDA_VISIBLE_DEVICES="$gpu_ids" \
+    --python-mode -- -c "raise SystemExit('insufficient hardware: need >=2 GPUs')" \
+    || true
+  # Ensure failure semantics.
+  exit 1
+fi
+
+if [[ -z "$dataset_path" || -z "$model_path" ]]; then
+  python3 benchmark_scripts/runner.py \
+    --stage multi_gpu --task infer --out-dir "$out_dir" --framework pytorch \
+    --assets-json "$assets_json_path" \
+    --decision-reason "Prepare stage did not provide dataset/model paths." \
+    --env CUDA_VISIBLE_DEVICES="$gpu_ids" \
+    --python-mode -- -c "raise SystemExit('missing dataset/model paths; run prepare_assets.sh first')" \
+    || true
+  exit 1
+fi
+
+dataset_path="$(python3 -c 'import pathlib,sys; print(pathlib.Path(sys.argv[1]).resolve())' "$dataset_path" 2>/dev/null || echo "$dataset_path")"
+model_path="$(python3 -c 'import pathlib,sys; print(pathlib.Path(sys.argv[1]).resolve())' "$model_path" 2>/dev/null || echo "$model_path")"
+
+hydra_dir="$out_dir/hydra"
+mkdir -p "$hydra_dir"
+
+HF_HOME="$repo_root/benchmark_assets/cache/huggingface"
+HUGGINGFACE_HUB_CACHE="$HF_HOME/hub"
+TRANSFORMERS_CACHE="$HF_HOME/transformers"
+TORCH_HOME="$repo_root/benchmark_assets/cache/torch"
+XDG_CACHE_HOME="$repo_root/benchmark_assets/cache/xdg"
+py_path="$repo_root"
+if [[ -n "${PYTHONPATH:-}" ]]; then
+  py_path="$repo_root:$PYTHONPATH"
+fi
+
+python3 benchmark_scripts/runner.py \
+  --stage multi_gpu --task infer --out-dir "$out_dir" --framework pytorch --timeout-sec 1200 \
+  --assets-json "$assets_json_path" \
+  --decision-reason "Run Chitu offline inference benchmark with torch.distributed.run (2 GPUs, 1 iter, 1 request) and Hydra output redirected under build_output." \
+  --env CUDA_VISIBLE_DEVICES="$gpu_ids" \
+  --env PYTHONPATH="$py_path" \
+  --env HF_HOME="$HF_HOME" \
+  --env HUGGINGFACE_HUB_CACHE="$HUGGINGFACE_HUB_CACHE" \
+  --env TRANSFORMERS_CACHE="$TRANSFORMERS_CACHE" \
+  --env TORCH_HOME="$TORCH_HOME" \
+  --env XDG_CACHE_HOME="$XDG_CACHE_HOME" \
+  --python-mode -- \
+    -m torch.distributed.run \
+    --nproc_per_node=2 \
+    --master_port=29501 \
+    --module benchmarks.benchmark_offline \
+    "hydra.run.dir=$hydra_dir" \
+    "hydra.output_subdir=.hydra" \
+    "models=$model_name" \
+    "models.ckpt_dir=$model_path" \
+    "models.tokenizer_path=$model_path" \
+    "infer.tp_size=2" \
+    "infer.pp_size=1" \
+    "infer.dp_size=1" \
+    "infer.ep_size=1" \
+    "infer.max_reqs=1" \
+    "infer.max_seq_len=32" \
+    "infer.prefill_chunk_size=1" \
+    "infer.use_cuda_graph=False" \
+    "infer.attn_type=ref" \
+    "benchmark.iters=1" \
+    "benchmark.num_reqs_list=[1]" \
+    "benchmark.input_len=8" \
+    "benchmark.output_len=8" \
+    "benchmark.dataset=sharegpt" \
+    "benchmark.dataset_path=$dataset_path"
+
+exit $?

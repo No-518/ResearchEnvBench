@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "notes": "Runner configs for env-setup agents. The host program must substitute {placeholders} before execution.",
+  "placeholders": {
+    "repo_root": "ABSOLUTE PATH to repo root (cwd)",
+    "prompt_file": "ABSOLUTE PATH to merged prompt text file",
+    "out_dir": "ABSOLUTE PATH to write logs/artifacts",
+    "report_path": "ABSOLUTE PATH to /opt/scimlopsbench/report.json (or overridden)",
+    "report_schema_path": "ABSOLUTE PATH to a JSON Schema file that matches report.json",
+    "python_bin": "python3",
+    "codex_bin": "codex",
+    "claude_bin": "claude",
+    "codex_model": "",
+    "claude_model": "",
+    "nexau_home": "/opt/nexau",
+    "nexau_python": "/opt/nexau/.venv/bin/python",
+    "nexau_dotenv": "/opt/nexau/.env",
+    "nexau_agent_config": "/opt/nexau/env_setup_config/deepseek-v3.1-nex-n1.yaml",
+    "nexau_deepseek31_agent_config": "/opt/scimlopsbench/harness/tools/env_setup_runner/nexau_configs/nexau_deepseek31_nexn1.yaml",
+    "nexau_generic_agent_config": "/opt/scimlopsbench/harness/tools/env_setup_runner/nexau_configs/nexau_generic_llm.yaml",
+    "nexau_run_once_py": "/opt/nexau/env_setup_config/run_once.py"
+  },
+  "backends": {
+    "nexau": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export NEXAU_HOME=\"{nexau_home}\"; export NEXAU_AGENT_CONFIG=\"${{NEXAU_AGENT_CONFIG:-{nexau_agent_config}}}\"; export LLM_API_TYPE=\"${{LLM_API_TYPE:-anthropic_chat_completion}}\"; export LLM_TOOL_CALL_MODE=\"${{LLM_TOOL_CALL_MODE:-anthropic}}\"; \"{nexau_python}\" \"{nexau_run_once_py}\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "agent_writes_file",
+        "path": "{report_path}"
+      }
+    },
+    "nexau_deepseek31_nexn1": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export NEXAU_HOME=\"{nexau_home}\"; export NEXAU_AGENT_CONFIG=\"${{NEXAU_AGENT_CONFIG:-{nexau_deepseek31_agent_config}}}\"; export LLM_API_TYPE=\"${{LLM_API_TYPE:-anthropic_chat_completion}}\"; export LLM_TOOL_CALL_MODE=\"${{LLM_TOOL_CALL_MODE:-anthropic}}\"; \"{nexau_python}\" \"{nexau_run_once_py}\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "agent_writes_file",
+        "path": "{report_path}"
+      }
+    },
+    "nexau_gemini30": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export NEXAU_HOME=\"{nexau_home}\"; export NEXAU_AGENT_CONFIG=\"${{NEXAU_AGENT_CONFIG:-{nexau_generic_agent_config}}}\"; export LLM_API_TYPE=\"${{LLM_API_TYPE:-anthropic_chat_completion}}\"; export LLM_TOOL_CALL_MODE=\"${{LLM_TOOL_CALL_MODE:-anthropic}}\"; \"{nexau_python}\" \"{nexau_run_once_py}\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "agent_writes_file",
+        "path": "{report_path}"
+      }
+    },
+    "nexau_claude_sonnet45": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export NEXAU_HOME=\"{nexau_home}\"; export NEXAU_AGENT_CONFIG=\"${{NEXAU_AGENT_CONFIG:-{nexau_generic_agent_config}}}\"; export LLM_API_TYPE=\"${{LLM_API_TYPE:-anthropic_chat_completion}}\"; export LLM_TOOL_CALL_MODE=\"${{LLM_TOOL_CALL_MODE:-anthropic}}\"; \"{nexau_python}\" \"{nexau_run_once_py}\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "agent_writes_file",
+        "path": "{report_path}"
+      }
+    },
+    "nexau_minimax25": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export NEXAU_HOME=\"{nexau_home}\"; export NEXAU_AGENT_CONFIG=\"${{NEXAU_AGENT_CONFIG:-{nexau_generic_agent_config}}}\"; export LLM_API_TYPE=\"${{LLM_API_TYPE:-anthropic_chat_completion}}\"; export LLM_TOOL_CALL_MODE=\"${{LLM_TOOL_CALL_MODE:-anthropic}}\"; \"{nexau_python}\" \"{nexau_run_once_py}\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "agent_writes_file",
+        "path": "{report_path}"
+      }
+    },
+    "codex": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export HOME=/tmp/codex_home; export XDG_CONFIG_HOME=/tmp/codex_xdg; mkdir -p \"$HOME\" \"$XDG_CONFIG_HOME\" \"$HOME/.codex\"; echo \"[codex] whoami=$(whoami) HOME=$HOME\"; ls -la /opt/host_codex_ro 2>/dev/null || true; if [ -d /opt/host_codex_ro ]; then cp -a /opt/host_codex_ro/. \"$HOME/.codex/\" || true; fi; if [ -d /opt/host_codex_xdg_ro ]; then mkdir -p \"$XDG_CONFIG_HOME/codex\"; cp -a /opt/host_codex_xdg_ro/. \"$XDG_CONFIG_HOME/codex/\" || true; fi; ls -la \"$HOME/.codex\" || true; if [ -z \"${{OPENAI_BASE_URL:-}}\" ] && [ -n \"${{CODEX_BASE_URL:-}}\" ]; then export OPENAI_BASE_URL=\"${{CODEX_BASE_URL}}\"; fi; export OPENAI_BASE_URL=\"${{OPENAI_BASE_URL:-https://api.openai.com/v1}}\"; if [ -z \"${{OPENAI_API_KEY:-}}\" ] && [ -n \"${{CODEX_API_KEY:-}}\" ]; then export OPENAI_API_KEY=\"${{CODEX_API_KEY}}\"; fi; if [ -z \"${{OPENAI_API_KEY:-}}\" ] && [ -n \"${{CODEX_TOKEN:-}}\" ]; then export OPENAI_API_KEY=\"${{CODEX_TOKEN}}\"; fi; if [ -z \"${{OPENAI_API_KEY:-}}\" ]; then echo \"[codex] ERROR: OPENAI_API_KEY is not set\" >&2; exit 2; fi; unset LLM_BASE_URL LLM_API_KEY SUMMARY_BASE_URL SUMMARY_API_KEY EXTRACT_BASE_URL EXTRACT_API_KEY; model_args=(); if [ -n \"{codex_model}\" ]; then model_args=(--model \"{codex_model}\"); fi; \"{codex_bin}\" --version; \"{codex_bin}\" exec \"${{model_args[@]}}\" --full-auto --skip-git-repo-check --sandbox workspace-write --output-schema \"{report_schema_path}\" --output-last-message \"{report_path}\" \"$(cat \"{prompt_file}\")\" 2>&1 | tee \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "forced_by_runner",
+        "path": "{report_path}",
+        "strategy": "codex_output_last_message"
+      }
+    },
+    "claude_code": {
+      "kind": "bash",
+      "cwd": "{repo_root}",
+      "argv": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; mkdir -p \"{out_dir}\" \"$(dirname \"{report_path}\")\"; export HOME=/tmp/claude_home; export XDG_CONFIG_HOME=/tmp/claude_xdg; export CLAUDE_CONFIG_DIR=\"$HOME\"; mkdir -p \"$HOME\" \"$XDG_CONFIG_HOME\" \"$HOME/.claude\"; bash \"{runner_dir}/bin/run_claude_print_json.sh\" \"{repo_root}\" \"{prompt_file}\" \"{claude_model}\" \"{report_schema_path}\" 2> \"{out_dir}/agent_log.txt\""
+      ],
+      "report": {
+        "mode": "forced_by_runner",
+        "path": "{report_path}",
+        "strategy": "stdout_json_report"
+      }
+    }
+  }
+}

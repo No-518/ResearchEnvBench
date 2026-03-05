@@ -1,0 +1,80 @@
+type: agent
+name: nexau_env_setup_agent_generic
+description: Environment bootstrap agent (generic LLM backend)
+
+max_context_tokens: 100000
+tool_call_mode: ${env.LLM_TOOL_CALL_MODE}
+
+system_prompt: /opt/nexau/env_setup_config/system_prompt.md
+system_prompt_type: jinja
+
+llm_config:
+  model: ${env.LLM_MODEL}
+  base_url: ${env.LLM_BASE_URL}
+  api_key: ${env.LLM_API_KEY}
+  temperature: 0.2
+  max_tokens: 4096
+  stream: true
+  api_type: ${env.LLM_API_TYPE}
+
+tools:
+  - name: web_search
+    yaml_path: /opt/nexau/env_setup_config/tools/WebSearch.tool.yaml
+    binding: nexau.archs.tool.builtin.web_tool:web_search
+  - name: web_read
+    yaml_path: /opt/nexau/env_setup_config/tools/WebFetch.tool.yaml
+    binding: nexau.archs.tool.builtin.web_tool:web_read
+  - name: todo_write
+    yaml_path: /opt/nexau/env_setup_config/tools/TodoWrite.tool.yaml
+    binding: nexau.archs.tool.builtin.todo_write:todo_write
+  - name: grep
+    yaml_path: /opt/nexau/env_setup_config/tools/Grep.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.grep_tool:grep_tool
+  - name: glob
+    yaml_path: /opt/nexau/env_setup_config/tools/Glob.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.glob_tool:glob_tool
+  - name: file_read
+    yaml_path: /opt/nexau/env_setup_config/tools/Read.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_read_tool:file_read_tool
+  - name: file_write
+    yaml_path: /opt/nexau/env_setup_config/tools/Write.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_write_tool:file_write_tool
+  - name: file_edit
+    yaml_path: /opt/nexau/env_setup_config/tools/Edit.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_edit_tool:file_edit_tool
+  - name: bash
+    yaml_path: /opt/nexau/env_setup_config/tools/Bash.tool.yaml
+    binding: nexau.archs.tool.builtin.bash_tool:bash_tool
+  - name: ls
+    yaml_path: /opt/nexau/env_setup_config/tools/Ls.tool.yaml
+    binding: nexau.archs.tool.builtin.ls_tool:ls_tool
+  - name: multiedit
+    yaml_path: /opt/nexau/env_setup_config/tools/MultiEdit.tool.yaml
+    binding: nexau.archs.tool.builtin.multiedit_tool:multiedit_tool
+  - name: run_code
+    yaml_path: /opt/nexau/env_setup_config/tools/RunCode.tool.yaml
+    binding: nexau.archs.tool.builtin.run_code_tool:run_code_tool
+
+middlewares:
+  - import: nexau.archs.main_sub.execution.middleware.context_compaction:ContextCompactionMiddleware
+    params:
+      max_context_tokens: 100000
+      auto_compact: true
+      threshold: 0.75
+      compaction_strategy: "tool_result_compaction"
+      window_size: 2
+      summary_model: ${env.SUMMARY_MODEL}
+      summary_base_url: ${env.SUMMARY_BASE_URL}
+      summary_api_key: ${env.SUMMARY_API_KEY}
+  - import: nexau.archs.main_sub.execution.hooks:LoggingMiddleware
+    params:
+      model_logger: "nexau_env_setup_agent"
+      tool_logger: "nexau_env_setup_agent"
+      log_model_calls: true
+
+tracers:
+  - import: nexau.archs.tracer.adapters.langfuse:LangfuseTracer
+    params:
+      public_key: ${env.LANGFUSE_PUBLIC_KEY}
+      secret_key: ${env.LANGFUSE_SECRET_KEY}
+      host: ${env.LANGFUSE_HOST}
