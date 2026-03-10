@@ -1,29 +1,8 @@
 # ResearchEnvBench
 
-This repository is the released benchmark harness used for the paper:
-
-- `ResearchEnvBench: Benchmarking Agents on Environment Synthesis for Research Code Execution` 
-
-It evaluates whether coding agents can bootstrap runnable ML/HPC research environments from raw repositories.
-
-This repository is the official code repository for the paper
+This repository is the official code release for
 [`ResearchEnvBench: Benchmarking Agents on Environment Synthesis for Research Code Execution`](https://arxiv.org/abs/2603.06739).
-
-## Citation
-
-If you use this repository, please cite:
-
-```bibtex
-@misc{wang2026researchenvbenchbenchmarkingagentsenvironment,
-      title={ResearchEnvBench: Benchmarking Agents on Environment Synthesis for Research Code Execution}, 
-      author={Yubang Wang and Chenxi Zhang and Bowen Chen and Zezheng Huai and Zihao Dai and Xinchi Chen and Yuxin Wang and Yining Zheng and Jingjing Gong and Xipeng Qiu},
-      year={2026},
-      eprint={2603.06739},
-      archivePrefix={arXiv},
-      primaryClass={cs.SE},
-      url={https://arxiv.org/abs/2603.06739}, 
-}
-```
+It evaluates whether coding agents can bootstrap runnable ML/HPC research environments from raw repositories.
 
 ## What This Repo Contains
 
@@ -326,3 +305,19 @@ These are enforced by tests and fixed benchmark metadata.
 - `dockerfiles/ultimate.Dockerfile` uses the official base image `nvidia/cuda:12.4.1-devel-ubuntu22.04`.
 - Benchmarks are designed around no-modification of tracked repo source files during agent setup.
 - For backend-specific runner details, see `tools/env_setup_runner/README.md`.
+
+## Citation
+
+If you use this repository, please cite:
+
+```bibtex
+@misc{wang2026researchenvbenchbenchmarkingagentsenvironment,
+      title={ResearchEnvBench: Benchmarking Agents on Environment Synthesis for Research Code Execution},
+      author={Yubang Wang and Chenxi Zhang and Bowen Chen and Zezheng Huai and Zihao Dai and Xinchi Chen and Yuxin Wang and Yining Zheng and Jingjing Gong and Xipeng Qiu},
+      year={2026},
+      eprint={2603.06739},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2603.06739},
+}
+```
